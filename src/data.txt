@@ -1,0 +1,29 @@
+username (unique)
+password
+fname
+lname
+adhaar id (unique)
+type : student
+subjectlist: [ {subjectCode, enrolledOrNot, test: [ {testId, marks} ] } ]
+
+username
+password
+fname
+lname
+adhaar id
+type : teacher
+subjectCode
+subjectDetails: { subjectName, classlink, tests : [ testId, test: [ {question: string, options: [ 4 strings], answer: string} ] ] }
+studentList: [ studentEmail ]
+
+STUDENT
+    subjectCode                 enrol for exam           enrolledOrNot = True
+    subjectCode, testId         take exam                [test (question, options, answer)]
+    /getClassLink, subjectCode  join class               classlink
+    subjectCode, testId         view my result           marks
+
+TEACHER
+    /getStudentList                                 view student list        studentList
+    [testId ,test (question, options, answer)]      create test              store it
+    /getScores                                      view test scores         marks from students
+    classlink                                       create class meeting     classlink
